@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  goapi:
+    container_name: goapi
+    build: ./goapi
+    ports:
+      - "1323:1323"
+    networks:
+      - mynetwork
+  prometheus:
+    container_name: prometheus
+    build: ./prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
