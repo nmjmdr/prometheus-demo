@@ -16,5 +16,13 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
       - mynetwork
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
 networks:
   mynetwork:
